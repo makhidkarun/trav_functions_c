@@ -24,7 +24,7 @@ int main(void) {
 
     int j; 
     for ( j = 0; j < UPP_LEN; j++) {
-        UPP[j] = roll_average_stat();
+        UPP[j] = roll_2d6();
     }
 
     printf("UPP: ");
