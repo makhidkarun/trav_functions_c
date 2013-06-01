@@ -19,9 +19,7 @@ int get_rand(int min, int max) {
 }
 
 int roll_2d6() {
-    int roll;
-    roll = get_rand(1,6) + get_rand(1,6);
-    return roll;
+    return get_rand(1,6) + get_rand(1,6);
 }
 
 int roll_1d6() {
@@ -41,9 +39,13 @@ int roll_2d6_vs(int target) {
     return success;
 }
 
-int roll_average_stat() {
+int roll_average_traveller_stat() {
     int roll;
     roll = get_rand(2,5) + get_rand(2,5);
     return roll;
+}
+
+int roll_strong_traveller_stat(int add) {
+    return  get_rand(2,6) + get_rand(2,6) + add;
 }
 

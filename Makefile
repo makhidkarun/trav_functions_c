@@ -17,6 +17,11 @@ die_roller.o: dice.o die_roller.c
 die_roller: die_roller.o 
 	${CC} ${CFLAGS} die_roller.o dice.o -o die_roller
 
+trav_chargen.o: trav_chargen.c dice.o
+	${CC} ${CFLAGS_OBJ} trav_chargen.c
+
+trav_chargen: trav_chargen.o
+	${CC} ${CFLAGS} trav_chargen.o dice.o -o trav_chargen
 
 
 

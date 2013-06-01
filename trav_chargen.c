@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <getopt.h>
+
 #include "dice.h"
 
 #define UPP_LEN 6
@@ -20,12 +22,41 @@ char UPP_SYM[][4] = {
     "SOC",
 };
 
-int main(void) {
+int main(int argc, char *argv[]) {
 
     int j; 
-    for ( j = 0; j < UPP_LEN; j++) {
-        UPP[j] = roll_2d6();
+    int ch;
+
+    if (argc > 1 ){
+        while (( ch = getopt(argc, argv, "ahrs")) != EOF) {
+         switch(ch) {
+             case 'a':   
+                 for ( j = 0; j < UPP_LEN; j++) {
+                     UPP[j] = roll_average_traveller_stat();
+                 }
+                 break;
+             case 'h':
+                 printf("-a <average stats>, -s <strong stats>\n");
+                 printf("Default is 2-C.\n");
+                 return 0;
+             case 's':
+                 for ( j = 0; j < UPP_LEN; j++) {
+                     UPP[j] = roll_strong_traveller_stat(2) ;
+                 }
+                 break;
+             default:
+                 printf("-a <average stats>, -s <strong stats>\n");
+                 printf("Default is 2-C.\n");
+                 return 0;
+         }
+        }
+    } else {
+      for ( j = 0; j < UPP_LEN; j++) {
+         UPP[j] = roll_2d6();
+       }
     }
+
+
 
     printf("UPP: ");
     for ( j = 0; j < UPP_LEN; j++) {
@@ -34,3 +65,4 @@ int main(void) {
     printf("\n");
     return 0;
 }
+
