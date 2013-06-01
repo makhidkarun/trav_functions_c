@@ -1,17 +1,15 @@
-/*
-Die Roller implemented in C
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "dice.h"
+#include <unistd.h>
 
 int get_rand(int min, int max) {
 	static int init = 0;
 	int roll;
 
 	if (init == 0) {
-		srand(time(NULL));
+		srand(getpid());
 		init = 1;
 	}
 

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "./die_roll.h"
+#include "dice.h"
 
 #define UPP_LEN 6
 #define STR 0
@@ -32,4 +32,5 @@ int main(void) {
         printf("%X", UPP[j]);
     }
     printf("\n");
+    return 0;
 }
